@@ -4,13 +4,21 @@ package softuni.exam.domain.entitys;
 import javax.persistence.*;
 
 @MappedSuperclass
-public class BaseEntity {
+public abstract class BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private Integer id;
+    private Long id;
 
-//    @Override
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    //    @Override
 //    public int hashCode() {
 //        final int prime = 31;
 //        int result = 1;

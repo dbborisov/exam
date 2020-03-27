@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 import softuni.exam.domain.entitys.Picture;
 
 @Repository
-public interface PictureRepository extends JpaRepository<Picture,Integer> {
+public interface PictureRepository extends JpaRepository<Picture,Long> {
 
 
 }

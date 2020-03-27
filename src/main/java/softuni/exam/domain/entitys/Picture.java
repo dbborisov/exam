@@ -8,14 +8,13 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "pictures")
 public class Picture extends BaseEntity {
-
-    private String url;
-
+    @Column(name = "url",nullable = false)
+   private String url;
 
     public Picture() {
     }
 
-    @Column(name = "url",nullable = false)
+
     public String getUrl() {
         return url;
     }

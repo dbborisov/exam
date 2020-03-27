@@ -1,36 +1,34 @@
 package softuni.exam.domain.entitys;
 
 
-import org.hibernate.validator.constraints.Length;
-
 import javax.persistence.*;
-import javax.validation.constraints.Min;
 import java.math.BigDecimal;
 
 @Entity
 @Table(name = "players")
 public class Player extends BaseEntity {
 
-
-    private String firstName;
-
-    private String lastName;
-
-    //    @Length(min = 1,max = 99)
-    private Integer number;
-
-    private BigDecimal salary;
-
-    private Position position;
-
-    private Picture picture;
-
-    private Team team;
-
     public Player() {
     }
 
     @Column(name = "first_name", nullable = false)
+    private String firstName;
+    @Column(name = "last_name", nullable = false)
+    private String lastName;
+
+    @Column(name = "number", nullable = false)
+    private Integer number;
+    @Column(name = "salary", nullable = false)
+    private BigDecimal salary;
+
+    @Enumerated(EnumType.STRING)
+    private Position position;
+    @ManyToOne
+    private Picture picture;
+    @ManyToOne
+    private Team team;
+
+
     public String getFirstName() {
         return firstName;
     }
@@ -39,7 +37,6 @@ public class Player extends BaseEntity {
         this.firstName = firstName;
     }
 
-    @Column(name = "last_name", nullable = false)
     public String getLastName() {
         return lastName;
     }
@@ -47,8 +44,6 @@ public class Player extends BaseEntity {
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
-
-    @Column(name = "number", nullable = false)
 
     public Integer getNumber() {
         return number;
@@ -58,8 +53,6 @@ public class Player extends BaseEntity {
         this.number = number;
     }
 
-    @Column(name = "salary", nullable = false)
-//    @Min(value = 0)
     public BigDecimal getSalary() {
         return salary;
     }
@@ -68,8 +61,6 @@ public class Player extends BaseEntity {
         this.salary = salary;
     }
 
-    //    @Column(name = "position",nullable = false)
-    @Enumerated(EnumType.STRING)
     public Position getPosition() {
         return position;
     }
@@ -78,7 +69,6 @@ public class Player extends BaseEntity {
         this.position = position;
     }
 
-    @ManyToOne
     public Picture getPicture() {
         return picture;
     }
@@ -87,7 +77,6 @@ public class Player extends BaseEntity {
         this.picture = picture;
     }
 
-    @ManyToOne
     public Team getTeam() {
         return team;
     }

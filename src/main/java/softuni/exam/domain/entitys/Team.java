@@ -1,24 +1,21 @@
 package softuni.exam.domain.entitys;
 
-
-import org.hibernate.validator.constraints.Length;
-
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 @Entity
 @Table(name = "teams")
 public class Team extends BaseEntity {
 
-
+    @Column(name = "name", nullable = false)
     private String name;
 
+    @ManyToOne
     private Picture picture;
 
-    public Team() {
-    }
 
-    @Column(name = "name",nullable = false)
-    @Length(min = 3,max = 20)
     public String getName() {
         return name;
     }
@@ -27,7 +24,6 @@ public class Team extends BaseEntity {
         this.name = name;
     }
 
-    @ManyToOne()
     public Picture getPicture() {
         return picture;
     }
@@ -35,5 +31,4 @@ public class Team extends BaseEntity {
     public void setPicture(Picture picture) {
         this.picture = picture;
     }
-
 }
